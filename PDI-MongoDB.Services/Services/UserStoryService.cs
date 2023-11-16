@@ -3,26 +3,25 @@ using PDI_MongoDB.Infra.Repositories;
 
 namespace PDI_MongoDB.Services.Services
 {
-    public class WorkService : IWorkService
+    public class UserStoryService : IUserStoryService
     {
-        private readonly IWorkRepository _repository;
-        public WorkService(IWorkRepository repository)
+        private readonly IUserStoryRepository _repository;
+        public UserStoryService(IUserStoryRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<Work> AddAsync(Work work)
+        public async Task<UserStory> AddAsync(UserStory userStory)
         {
             try
             {
-                var model = new Work()
+                var model = new UserStory()
                 {
                     Id = Guid.NewGuid(),
-                    Name = work.Name,
-                    Description = work.Description,
-                    IsComplete = work.IsComplete,
-                    IsEnabled = work.IsEnabled,
-                    UserStoryId = work.UserStoryId,
+                    Title = userStory.Title,
+                    Description = userStory.Description,
+                    Status = userStory.Status,
+                    IsEnabled = userStory.IsEnabled,
                 };
 
                 await _repository.AddAsync(model);
@@ -34,7 +33,7 @@ namespace PDI_MongoDB.Services.Services
             }
         }
 
-        public async Task<Work> GetByIdAsync(Guid id)
+        public async Task<UserStory> GetByIdAsync(Guid id)
         {
             try
             {
@@ -46,7 +45,7 @@ namespace PDI_MongoDB.Services.Services
             }
         }
 
-        public async Task<IEnumerable<Work>> GetAllAsync()
+        public async Task<IEnumerable<UserStory>> GetAllAsync()
         {
             try
             {
@@ -58,12 +57,12 @@ namespace PDI_MongoDB.Services.Services
             }
         }
 
-        public async Task<Work> UpdateAsync(Work work)
+        public async Task<UserStory> UpdateAsync(UserStory userStory)
         {
             try
             {
-                await _repository.UpdateAsync(work);
-                return work;
+                await _repository.UpdateAsync(userStory);
+                return userStory;
             }
             catch (Exception ex)
             {

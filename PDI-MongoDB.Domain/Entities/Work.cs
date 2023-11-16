@@ -7,5 +7,6 @@ namespace PDI_MongoDB.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsComplete { get; set; }
+        public Guid UserStoryId { get; set; }
     }
 }

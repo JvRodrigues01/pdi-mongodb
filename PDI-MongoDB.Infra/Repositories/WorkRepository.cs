@@ -8,7 +8,7 @@ namespace PDI_MongoDB.Infra.Repositories
         private readonly IMongoCollection<Work> _collection;
         public WorkRepository(IMongoDatabase mongoDatabase) 
         {
-            _collection = mongoDatabase.GetCollection<Work>("works");
+            _collection = mongoDatabase.GetCollection<Work>("Works");
         }
 
         public async Task AddAsync(Work work)

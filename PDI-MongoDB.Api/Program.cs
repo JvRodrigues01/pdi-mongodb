@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PDI_MongoDB.Infra.Context;
@@ -36,6 +35,9 @@ builder.Services.AddTransient(x =>
 
 builder.Services.AddScoped<IWorkService, WorkService>();
 builder.Services.AddSingleton<IWorkRepository, WorkRepository>();
+
+builder.Services.AddScoped<IUserStoryService, UserStoryService>();
+builder.Services.AddSingleton<IUserStoryRepository, UserStoryRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
