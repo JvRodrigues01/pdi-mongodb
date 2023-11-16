@@ -8,5 +8,6 @@ namespace PDI_MongoDB.Infra.Repositories
         Task<Work> GetByIdAsync(Guid id);
         Task UpdateAsync(Work work);
         Task<IEnumerable<Work>> GetAllAsync();
+        Task DeleteAsync(Guid id);
     }
 }

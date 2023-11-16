@@ -25,7 +25,7 @@ namespace PDI_MongoDB.Services.Services
                 };
 
                 await _repository.AddAsync(model);
-                return work;
+                return model;
             }
             catch (Exception ex)
             {
@@ -63,6 +63,18 @@ namespace PDI_MongoDB.Services.Services
             {
                 await _repository.UpdateAsync(work);
                 return work;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            try
+            {
+                await _repository.DeleteAsync(id);
             }
             catch (Exception ex)
             {

@@ -29,7 +29,9 @@ namespace PDI_MongoDB.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync([FromBody] Work work)
         {
-            return Ok(await _workService.AddAsync(work));
+            var result = await _workService.AddAsync(work);
+
+            return new ObjectResult(result) { StatusCode = StatusCodes.Status201Created };
         }
 
         [HttpPut]
@@ -39,9 +41,10 @@ namespace PDI_MongoDB.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            await _workService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

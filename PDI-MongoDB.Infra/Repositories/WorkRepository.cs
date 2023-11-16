@@ -30,5 +30,10 @@ namespace PDI_MongoDB.Infra.Repositories
         {
             return await _collection.Find(x => true).ToListAsync();
         }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            await _collection.DeleteOneAsync(x => x.Id == id);
+        }
     }
 }
